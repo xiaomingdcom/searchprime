@@ -5,7 +5,7 @@
 #include <math.h>
 #include <ctime>
 #define Ns 2040000000/3
-#define No 100000000
+#define No 100000000//这里没有定义为1亿，导致debug时数组不够长
 using namespace std;
 char prime[Ns];
 int s_prime[No];
