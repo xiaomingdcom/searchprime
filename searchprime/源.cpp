@@ -5,7 +5,7 @@
 #include <math.h>
 #include <ctime>
 #define Ns 2040000000/3
-#define No 1000000
+#define No 100000000
 using namespace std;
 char prime[Ns];
 int s_prime[No];
@@ -16,7 +16,7 @@ int searchprime(int N) {
 	int l = 0;
 	int pro = 0;
 	s_prime[0] = 2;
-	s_prime[1] = 3;//因为筛选的为6k+1，6k-1，2和3是特列，单独列出
+	s_prime[1] = 3;//因为筛选的为6k+1，6k-1，2和3是特例，单独列出
 	if (N == 1) {
 		return 2;
 	}
@@ -40,7 +40,7 @@ int searchprime(int N) {
 		}
 		for (j = 0; j < k; j++) {
 			pro = l*s_prime[j];
-			if (pro < 0 || pro >= (Ns * 3)) {
+			if (pro < 0 || pro >= (Ns * 3-6)) {
 				break;
 			}
 			if (pro % 6 == 1) {
@@ -65,7 +65,14 @@ void main()
 	int N = 0;
 	long start;
 	long end;
+	/*for (i = 0; i < Ns; i++) {
+		prime[i] = 0;
+	}
+	for (i = 0; i < No; i++) {
+		s_prime[i] = 0;
+	}*/
 	while (1) {
+		cout << "请输入N" << endl;
 		cin >> N;
 		if (cin.fail() || N<1 || N>100000000) {
 			cout << "输入错误" << endl;
